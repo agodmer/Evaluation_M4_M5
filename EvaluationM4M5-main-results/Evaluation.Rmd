@@ -87,6 +87,46 @@ tree
 Récupérez les fichiers FASTQ issus du run **SRR10390685** grâce à l'outil <strong class="tool">sra-tools</strong> @sratoolkit
 
 ```{bash}
+## Répertoire de travail
+pwd
+#/shared/projects/dubii2021/agodmer/Evaluation_M4_M5/EvaluationM4M5-main-results
+
+## Charger le module SRA tools avec la dernière version 
+module avail sra-tools
+module load sra-tools/2.10.3
+
+## Utilisation de la commande fasterq-dump pour télécharger les fichiers 
+
+## Visualisation de la version
+fasterq-dump --version
+#"fasterq-dump" version 2.10.3
+
+## Ecriture de la version de fasterq-dump sur le fichier Version_tools.txt dans supplemental_data
+fasterq-dump --version > ../supplemental_data/Version_tools.txt
+
+## Changement du répertoire de travail
+cd ..
+
+## Reservation des ressources pour le cluster
+salloc --cpus-per-task=6 --mem=5G
+
+## Télécharger les fichiers FASTQ
+srun fasterq-dump --split-files -p SRR10390685 --outdir DATA_analysis/FASTQ/
+
+## Lister les fichiers et regarder leur taille
+ls -sh DATA_analysis/FASTQ/
+#total 5.0G
+#2.5G SRR10390685_1.fastq  2.5G SRR10390685_2.fastq
+
+## Compression des fichier FASTQ avec mode verbeux acitvé
+srun gzip --verbose DATA_analysis/FASTQ/*.fastq
+
+# Liste des fichier et taille
+ls -sh DATA_analysis/FASTQ/
+#total 1.3G
+#617M SRR10390685_1.fastq.gz  627M SRR10390685_2.fastq.gz
+
+## La compression a bien fonctionnée !
 
 ```
 
