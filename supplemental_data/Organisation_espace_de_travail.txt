@@ -1,0 +1,28 @@
+.
+|-- DATA_analysis
+|   |-- CLEANING
+|   |-- FASTQ
+|   |-- MAPPING
+|   |-- QC
+|   `-- REFERENCE_GENOME
+|-- EvaluationM4M5-main-results
+|   |-- Evaluation.Rmd
+|   |-- Evaluation.html
+|   |-- EvaluationM4M5.Rproj
+|   |-- README.md
+|   |-- css
+|   |   `-- style.css
+|   |-- images
+|   |   |-- inrae.png
+|   |   `-- migale-orange.png
+|   `-- resources
+|       |-- biblio.bib
+|       |-- biomed-central.csl
+|       `-- footer.html
+|-- LICENSE
+|-- README.md
+`-- supplemental_data
+    |-- Organisation_espace_de_travail.txt
+    `-- README_supp_data.md
+
+11 directories, 14 files
