@@ -42,8 +42,44 @@ Vous allez travailler sur des données de reséquençage d'un génome bactérien
 
 ## Organisation de votre espace de travail
 
-```{bash}
+```{bash organisation de l'espace de travail}
 
+## Enregistrement de l'arborescence dans le fichier Evaluation_M4_M5/supplemental_data/Organisation_espace_de_travail.txt
+tree > supplemental_data/Organisation_espace_de_travail.txt
+
+## Commande tree
+tree
+
+#[agodmer@clust-slurm-client Evaluation_M4_M5]$ tree
+#.
+#|-- DATA_analysis
+#|   |-- CLEANING
+#|   |-- FASTQ
+#|   |-- MAPPING
+#|   |-- QC
+#|   `-- REFERENCE_GENOME
+#|-- EvaluationM4M5-main-results
+#|   |-- Evaluation.Rmd
+#|   |-- Evaluation.html
+#|   |-- EvaluationM4M5.Rproj
+#|   |-- README.md
+#|   |-- css
+#|   |   `-- style.css
+#|   |-- images
+#|   |   |-- inrae.png
+#|   |   `-- migale-orange.png
+#|   `-- resources
+#|       |-- biblio.bib
+#|       |-- biomed-central.csl
+#|       `-- footer.html
+#|-- LICENSE
+#|-- README.md
+#`-- supplemental_data
+#    |-- Organisation_espace_de_travail.txt
+#    `-- README_supp_data.md
+
+ 
+## Il n'y a pas de modification à faire pour l'instant
 ```
 
 ## Téléchargement des données brutes
