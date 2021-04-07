@@ -42,7 +42,7 @@ Vous allez travailler sur des données de reséquençage d'un génome bactérien
 
 ## Organisation de votre espace de travail
 
-```{bash organisation de l'espace de travail}
+```{bash}
 
 ## Enregistrement de l'arborescence dans le fichier Evaluation_M4_M5/supplemental_data/Organisation_espace_de_travail.txt
 tree > supplemental_data/Organisation_espace_de_travail.txt
