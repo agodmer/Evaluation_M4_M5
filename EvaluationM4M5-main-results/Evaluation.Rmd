@@ -168,7 +168,7 @@ pwd
 #/shared/projects/dubii2021/agodmer/Evaluation_M4_M5/DATA_analysis
 
 ## Téléchargement du génome de référence
-wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/045/GCF_000009045.1_ASM904v1/GCF_000009045.1_ASM904v1_genomic.fna.gz
+srun wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/045/GCF_000009045.1_ASM904v1/GCF_000009045.1_ASM904v1_genomic.fna.gz
 
 ## Visualisation du fichier
 ls -sh
@@ -196,6 +196,18 @@ La taille de ce génome est de <code>4215606</code> paires de bases.
 Téléchargez l'annotation de la souche ASM904v1 de _Bacillus subtilis_ disponible à [cette adresse](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/045/GCF_000009045.1_ASM904v1/GCF_000009045.1_ASM904v1_genomic.gff.gz)
 
 ```{bash}
+## Répertoire de travail
+pwd
+#/shared/projects/dubii2021/agodmer/Evaluation_M4_M5/DATA_analysis/REFERENCE_GENOME
+
+## Téléchargement de l'annotation du génome
+srun wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/045/GCF_000009045.1_ASM904v1/GCF_000009045.1_ASM904v1_genomic.gff.gz
+
+## Visualisation des fichiers
+ls -sh
+
+#total 1.3M
+#1.2M GCF_000009045.1_ASM904v1_genomic.fna.gz   69K GCF_000009045.1_ASM904v1_genomic.gff.gz
 
 ```
 
