@@ -43,6 +43,9 @@ Vous allez travailler sur des données de reséquençage d'un génome bactérien
 ## Organisation de votre espace de travail
 
 ```{bash}
+## Repertoire de travail
+pwd
+#/shared/projects/dubii2021/agodmer
 
 ## Enregistrement de l'arborescence dans le fichier Evaluation_M4_M5/supplemental_data/Organisation_espace_de_travail.txt
 tree > supplemental_data/Organisation_espace_de_travail.txt
@@ -133,10 +136,29 @@ ls -sh DATA_analysis/FASTQ/
 Combien de reads sont présents dans les fichiers R1 et R2 ?
 
 ```{bash}
+## Répertoire de travail
+pwd
+#/shared/projects/dubii2021/agodmer/Evaluation_M4_M5/DATA_analysis
+
+## Chargement du module seqkit
+module avail seqkit
+module load seqkit/0.14.0
+## Ecriture de la version de seqkit sur le fichier Version_tools.txt dans supplemental_data
+seqkit version >> ../supplemental_data/Version_tools.txt
+
+## Comptage des read présents et écriture des statistiques dans le fichier Raw_stats_fastq.txt dans Results/supplemental_data
+srun seqkit stats --threads 1 FASTQ/*.fastq.gz > ../supplemental_data/Raw_stats_fastq.txt
+
+## Visualisation des résultats
+cat ../supplemental_data/Raw_stats_fastq.txt
+
+#file                          format  type   num_seqs        sum_len  min_len  avg_len  max_len
+#FASTQ/SRR10390685_1.fastq.gz  FASTQ   DNA   7,066,055  1,056,334,498       35    149.5      151
+#FASTQ/SRR10390685_2.fastq.gz  FASTQ   DNA   7,066,055  1,062,807,718      130    150.4      151
 
 ```
 
-Les fichiers FASTQ contiennent <code></code> reads.
+Les fichiers FASTQ contiennent <code>7,066,055</code> reads.
 
 Téléchargez le génome de référence de la souche ASM904v1 de _Bacillus subtilis_ disponible à [cette adresse](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/045/GCF_000009045.1_ASM904v1/GCF_000009045.1_ASM904v1_genomic.fna.gz)
 
