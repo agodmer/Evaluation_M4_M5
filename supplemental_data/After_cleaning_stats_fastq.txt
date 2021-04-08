@@ -1,0 +1,3 @@
+file                                   format  type   num_seqs      sum_len  min_len  avg_len  max_len
+CLEANING/SRR10390685_1_clean.fastq.gz  FASTQ   DNA   6,777,048  996,891,051      100    147.1      151
+CLEANING/SRR10390685_2_clean.fastq.gz  FASTQ   DNA   6,777,048  990,442,597      100    146.1      151
