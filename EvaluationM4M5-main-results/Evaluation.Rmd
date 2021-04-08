@@ -214,16 +214,40 @@ ls -sh
 Combien de gènes sont connus pour ce génome ?
 
 ```{bash}
+## Répertoire de travail
+pwd
+#/shared/projects/dubii2021/agodmer/Evaluation_M4_M5/DATA_analysis/REFERENCE_GENOME
 
+## Enregistrement du résultats dans Stats_genome_ref_nb_genes.txt
+less GCF_000009045.1_ASM904v1_genomic.gff.gz | awk '($3 == "gene")' | wc -l > ../../supplemental_data/Stats_genome_ref_nb_genes.txt
+
+## Visualisation du fichier
+cat ../../supplemental_data/Stats_genome_ref_nb_genes.txt
+#4448
 ```
 
-<code></code> gènes sont recensés dans le fichier d'annotation.
+<code>4448</code> gènes sont recensés dans le fichier d'annotation.
 
 ## Contrôle qualité
 
 Lancez l'outil <strong class="tool">fastqc</strong> @fastqc dédié à l'analyse de la qualité des bases issues d'un séquençage haut-débit
 
 ```{bash}
+## Répertoire de travail
+pwd
+#/shared/projects/dubii2021/agodmer/Evaluation_M4_M5/DATA_analysis
+
+module avail fastqc
+module load fasqc/0.11.9
+## Ecriture de la version de fastqc sur le fichier Version_tools.txt dans supplemental_data
+fastqc --version >> ../supplemental_data/Version_tools.txt
+
+## Réservation des resources pour le cluster
+salloc --cpus-per-task=8 --mem=10G
+
+## Lancement de la commande fastqc
+srun fastqc FASTQ/SRR10390685_1.fastq.gz -o QC/ -t 8
+srun fastqc FASTQ/SRR10390685_2.fastq.gz -o QC/ -t 8
 
 ```
 
