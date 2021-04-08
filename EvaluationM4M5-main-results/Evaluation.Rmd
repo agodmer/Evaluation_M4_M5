@@ -275,6 +275,9 @@ car <code> Les reads n'ont pas la même longueur, de plus, on remarque que les a
 Quelle est la profondeur de séquençage (calculée par rapport à la taille du génome de référence) ?
 
 ```{bash}
+## Répertoire de travail
+pwd
+#/shared/projects/dubii2021/agodmer/Evaluation_M4_M5
 
 ## Formule :  N*L/G ; avec N = Nombre de lectures, L = Longueur des lectures et G = Taille du génome
 
@@ -305,6 +308,32 @@ La profondeur de séquençage est de : <code>496</code> X.
 Vous voulez maintenant nettoyer un peu vos lectures. Choisissez les paramètres de <strong class="tool">fastp</strong> @fastp qui vous semblent adéquats et justifiez-les.
 
 ```{bash}
+## Répertoire de travail
+pwd
+#/shared/projects/dubii2021/agodmer/Evaluation_M4_M5/DATA_analysis
+
+## Chargement du module fastp
+module avail fastp
+module load fastp/0.20.0
+## Ecriture de la version de fastp sur le fichier Version_tools.txt dans supplemental_data
+fastp --version >> ../supplemental_data/Version_tools.txt # A revoir ne fonctionne pas !
+
+## Ressources sur le cluster
+salloc --cpus-per-task=8 --mem=5G
+
+## Lancement de la commande fastp avec les paramètres choisis
+srun fastp --in1 FASTQ/SRR10390685_1.fastq.gz --in2 FASTQ/SRR10390685_2.fastq.gz --out1 CLEANING/SRR10390685_1_clean.fastq.gz --
+out2 CLEANING/SRR10390685_2_clean.fastq.gz --html ./fastp.html --cut_mean_quality 30 --cut_window_size 8 --length_required 100 --cut_tail --json CLEANING/fastp.json
+
+## Statistiques sur les read apres nettoyage avec fastp et écriture dans le fichier After_cleaning_stats_fastq.txt dans supplemental_data
+srun seqkit stats --threads 1 CLEANING/*.fastq.gz > ../supplemental_data/After_cleaning_stats_fastq.txt
+
+## Nombres de reads conservés
+cat ../supplemental_data/After_cleaning_stats_fastq.txt
+
+#file                                   format  type   num_seqs      sum_len  min_len  avg_len  max_len
+#CLEANING/SRR10390685_1_clean.fastq.gz  FASTQ   DNA   6,777,048  996,891,051      100    147.1      151
+#CLEANING/SRR10390685_2_clean.fastq.gz  FASTQ   DNA   6,777,048  990,442,597      100    146.1      151
 
 ```
 
@@ -313,10 +342,10 @@ Les paramètres suivants ont été choisis :
 
 |Parametre | Valeur | Explication |
 |----------|--------|-------------|
-|  --cut_mean_quality| 30 | Nettoyage des reads en fin de séquence  |
-
-
-
+|cut_mean_quality| 30 | Nettoyage des reads en fin de séquençage avec une qualité un peu plus basse  |
+|cut_window_size|8||
+|length_required|100||
+|cut_tail |||
 Ces paramètres ont permis de conserver <code></code> reads pairés, soit une perte de <code></code>% des reads bruts.
 
 ## Alignement des reads sur le génome de référence
