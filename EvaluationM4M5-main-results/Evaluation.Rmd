@@ -335,6 +335,12 @@ cat ../supplemental_data/After_cleaning_stats_fastq.txt
 #CLEANING/SRR10390685_1_clean.fastq.gz  FASTQ   DNA   6,777,048  996,891,051      100    147.1      151
 #CLEANING/SRR10390685_2_clean.fastq.gz  FASTQ   DNA   6,777,048  990,442,597      100    146.1      151
 
+## Calcul du nombre de reads conservés
+echo "(7066055-6777048)/7006055" | bc
+
+#b = (7066055-6777048)/7006055
+#b*100 
+#4.13%
 ```
 
 Les paramètres suivants ont été choisis : 
@@ -342,28 +348,94 @@ Les paramètres suivants ont été choisis :
 
 |Parametre | Valeur | Explication |
 |----------|--------|-------------|
-|cut_mean_quality| 30 | Nettoyage des reads en fin de séquençage avec une qualité un peu plus basse  |
+|cut_mean_quality| 30 | Nettoyage des reads en fin de séquençage avec une qualité un peu plus basse|
 |cut_window_size|8||
 |length_required|100||
 |cut_tail |||
-Ces paramètres ont permis de conserver <code></code> reads pairés, soit une perte de <code></code>% des reads bruts.
+Ces paramètres ont permis de conserver <code>6,777,048</code> reads pairés, soit une perte de <code>4,1</code>% des reads bruts.
 
 ## Alignement des reads sur le génome de référence
 
 Maintenant, vous allez aligner ces reads nettoyés sur le génome de référence à l'aide de <strong class="tool">bwa</strong> @bwa et <strong class="tool">samtools</strong> @samtools.
 
 ```{bash}
+## Répertoire de travail
+pwd
+#/shared/projects/dubii2021/agodmer/Evaluation_M4_M5/DATA_analysis
 
+## Chargement du module bwa
+module avail bwa
+module load bwa/0.7.17
+
+## Il n'y a pas de commande "Version", écriture de la version du module dans le fichier Version_tool.txt avec l'éditeur de texte nano
+
+## Création d'un FASTA index sur le génome de référence
+srun bwa index REFERENCE_GENOME/GCF_000009045.1_ASM904v1_genomic.fna.gz
+
+## Ressources du cluster
+salloc --cpus-per-task=32 --mem=5G
+
+## Mapping en utilisant la commande bwa mem
+srun bwa mem REFERENCE_GENOME/GCF_000009045.1_ASM904v1_genomic.fna.gz CLEANING/SRR10390685_1_clean.fastq.gz CLEANING/SRR10390685_2_clean.fastq.gz -t 8 > MAPPING/SRR10390685_on_GCF_000009045.1_ASM904v1_genomic_reference.1.sam
+
+## Chargement du module samtools
+module avail samtools
+module load samtools/1.10
+
+## Ecriture de la version de samtools sur le fichier Version_tools.txt dans supplemental_dat
+samtools --version >> ../supplemental_data/Version_tools.txt
+
+## Ressources du cluster
+salloc --cpus-per-task=8 --mem=5G
+
+## Conversion du fichier SAM en BAM
+samtools view MAPPING/SRR10390685_on_GCF_000009045.1_ASM904v1_genomic_reference.1.sam -b > MAPPING/SRR10390685_on_GCF_000009045.1_ASM904v1_genomic_reference.1.bam
+
+## Trier le fichier BAM avec la commande samtools sort
+srun samtools sort MAPPING/SRR10390685_on_GCF_000009045.1_ASM904v1_genomic_reference.1.sam -o MAPPING/SRR10390685_on_GCF_000009045.1_ASM904v1_genomic_reference.1.sort.bam
+
+## Indexage du fichier BAM trié
+srun samtools index MAPPING/SRR10390685_on_GCF_000009045.1_ASM904v1_genomic_reference.1.sort.bam
+
+## Supression des fichiers inutiles
+rm -f MAPPING/SRR10390685_on_GCF_000009045.1_ASM904v1_genomic_reference.1.sam SRR10390685_on_GCF_000009045.1_ASM904v1_genomic_reference.1.bam
 ```
 
 Combien de reads ne sont pas mappés ?
 
 ```{bash}
+## Répertoire de travail
+pwd
+#/shared/projects/dubii2021/agodmer/Evaluation_M4_M5/DATA_analysis
 
+## Statistiques de MAPPING
+srun samtools idxstats MAPPING/SRR10390685_on_GCF_000009045.1_ASM904v1_genomic_reference.1.sort.bam > ../supplemental_data/SRR10390685.sort.bam.idxstats
+srun samtools flagstat MAPPING/SRR10390685_on_GCF_000009045.1_ASM904v1_genomic_reference.1.sort.bam > ../supplemental_data/SRR10390685.sort.bam.flagstat
+
+## Calcul du nombre de reads non mappés
+
+cat ../supplemental_data/SRR10390685.sort.bam.flagstat
+#13571369 + 0 in total (QC-passed reads + QC-failed reads)
+#0 + 0 secondary
+#17273 + 0 supplementary
+#0 + 0 duplicates
+#12826829 + 0 mapped (94.51% : N/A)
+#13554096 + 0 paired in sequencing
+#6777048 + 0 read1
+#6777048 + 0 read2
+#12746420 + 0 properly paired (94.04% : N/A)
+#12769290 + 0 with itself and mate mapped
+#40266 + 0 singletons (0.30% : N/A)
+#0 + 0 with mate mapped to a different chr
+#0 + 0 with mate mapped to a different chr (mapQ>=5)
+
+## Nombre de reads non mappés (total des reads : "mapped" + "singletons" + unmapped) ; unmapped = "total" - "mapped" - "singletons"
+echo "13571369-12826829-40266" | bc
+#704274
 ```
 
 
-<code></code> reads ne sont pas mappés.
+<code>704274</code> reads ne sont pas mappés.
 
 ## Croisement de données
 
