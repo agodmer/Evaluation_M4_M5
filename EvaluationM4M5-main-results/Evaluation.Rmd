@@ -163,6 +163,17 @@ Les fichiers FASTQ contiennent <code>7,066,055</code> reads.
 Téléchargez le génome de référence de la souche ASM904v1 de _Bacillus subtilis_ disponible à [cette adresse](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/045/GCF_000009045.1_ASM904v1/GCF_000009045.1_ASM904v1_genomic.fna.gz)
 
 ```{bash}
+## Repertoire de travail
+pwd
+#/shared/projects/dubii2021/agodmer/Evaluation_M4_M5/DATA_analysis
+
+## Téléchargement du génome de référence
+wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/045/GCF_000009045.1_ASM904v1/GCF_000009045.1_ASM904v1_genomic.fna.gz
+
+## Visualisation du fichier
+ls -sh
+#total 68K
+#68K GCF_000009045.1_ASM904v1_genomic.fna.gz
 
 ```
 
@@ -170,9 +181,17 @@ Quelle est la taille de ce génome ?
 
 ```{bash}
 
+## Taille du génome de référence
+## Enregistrement du résultats dans Stats_genome_ref.txt
+zcat GCF_000009045.1_ASM904v1_genomic.fna.gz | grep -v "^>" | tr --delete "\n" | wc -c > ../../supplemental_data/Stats_genome_ref.txt
+
+## Visualisation du fichier
+cat ../../supplemental_data/Stats_genome_ref.txt
+#4215606
+
 ```
 
-La taille de ce génome est de <code></code> paires de bases.
+La taille de ce génome est de <code>4215606</code> paires de bases.
 
 Téléchargez l'annotation de la souche ASM904v1 de _Bacillus subtilis_ disponible à [cette adresse](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/045/GCF_000009045.1_ASM904v1/GCF_000009045.1_ASM904v1_genomic.gff.gz)
 
