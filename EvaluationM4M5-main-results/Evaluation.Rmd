@@ -269,11 +269,31 @@ Est-ce que les reads déposés ont subi une étape de nettoyage avant d'être d�
 - [X] Oui
 - [ ] Non
 
-car <code></code>
+car <code> Les reads n'ont pas la même longueur, de plus, on remarque que les adaptateurs ont été enlevés sur le graphique **Adapter Content**. </code>
 
 Quelle est la profondeur de séquençage (calculée par rapport à la taille du génome de référence) ?
 
 ```{bash}
+
+## Formule :  N*L/G ; avec N = Nombre de lectures, L = Longueur des lectures et G = Taille du génome
+
+## taille du génome de référence (G)
+zcat DATA_analysis/REFERENCE_GENOME/GCF_000009045.1_ASM904v1_genomic.fna.gz |grep -v "^>"|wc -c
+#4268302
+
+## Récupération des données : Nombre de lecture (N), Longueur des lectures (L)
+ cat supplemental_data/Raw_stats_fastq.txt
+ 
+#file                          format  type   num_seqs        sum_len  min_len  avg_len  max_len
+#FASTQ/SRR10390685_1.fastq.gz  FASTQ   DNA   7,066,055  1,056,334,498       35    149.5      151
+#FASTQ/SRR10390685_2.fastq.gz  FASTQ   DNA   7,066,055  1,062,807,718      130    150.4      151
+
+## profondeur = N*L/G 
+echo "(7066055*149.5 + 7066055*150.4)/4268302" | bc
+#496
+
+## Ecriture de la version de fastqc sur le fichier profondeur_seq_vs_genomeref.txt dans supplemental_data
+echo "(7066055*149.5 + 7066055*150.4)/4268302" | bc > supplemental_data/profondeur_seq_vs_genomeref.txt
 
 ```
 
