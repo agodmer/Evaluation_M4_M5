@@ -2,3 +2,5 @@
 "fasterq-dump" version 2.10.3
 
 seqkit v0.14.0
+FastQC v0.11.9
+
