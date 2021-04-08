@@ -260,10 +260,11 @@ La qualité des bases vous paraît-elle satisfaisante ? Pourquoi ?
 - [ ] Non
 
 
-car <code> la qualité (estimée par le score Phred) de chaque base pour tous les reads de votre jeu de données est en moyenne et en médiane supérieure à 30 (cette valeur correspond à la probabilité de 1 pour 1000 q'une base ait été identifiée incorectement) </code> comme le montre <code>le graphique **Per base sequence quality** qui représente représente la qualité (score Phred, en ordonnée) de chaque base (en abscisse) pour tous les reads de votre jeu de données ;  Le code couleur vous indique les scores de très bonne qualité en vert pour nos reads. On peut observer un warning sur **Per base sequence content** qui trace le pourcentage de chacun des quatre nucléotides à chaque position sur toutes les lectures dans le fichier de séquence d'entrée. Cependant La proportion de chacune des quatre bases reste relativement constante sur la longueur de la lecture avec AT et GC et les lignes du graphiques sont parallèles les unes aux autres. La sur-représentation des bases AT est concordante avec le poucentage de GC de l'espèce étudiée (*Bacillus subtilis*) qui n'est pas égal à 50% mais à 43% sur le génome de référence  Bacillus subtilis subsp. subtilis str. 168 [NCBI](https://www.ncbi.nlm.nih.gov/genome/?term=Bacillus%20subtilis%5BOrganism%5D&cmd=DetailsSearch). </code>
+car <code> la qualité (estimée par le score Phred) de chaque base pour tous les reads de votre jeu de données est en moyenne et en médiane supérieure à 30 (cette valeur correspond à la probabilité de 1 pour 1000 q'une base ait été identifiée incorectement) </code> comme le montre <code>le graphique **Per base sequence quality** qui représente représente la qualité (score Phred, en ordonnée) de chaque base (en abscisse) pour tous les reads de votre jeu de données ; Le code couleur vous indique les scores de très bonne qualité en vert pour la majorité de nos reads. La qualité des reads sur la plupart des plates-formes se dégradera au fur et à mesure de la progression du séquençage, il est donc courant de voir la qualité des reads entrer dans la zone orange vers la fin d'une lecture. On peut observer un warning sur **Per base sequence content** qui trace le pourcentage de chacun des quatre nucléotides à chaque position sur toutes les lectures dans le fichier de séquence d'entrée. Cependant La proportion de chacune des quatre bases reste relativement constante sur la longueur de la lecture avec AT et GC et les lignes du graphiques sont parallèles les unes aux autres. La sur-représentation des bases AT est concordante avec le poucentage de GC de l'espèce étudiée (*Bacillus subtilis*) qui n'est pas égal à 50% mais à 43% sur le génome de référence  *Bacillus subtilis subsp. subtilis str. 168* [NCBI](https://www.ncbi.nlm.nih.gov/genome/?term=Bacillus%20subtilis%5BOrganism%5D&cmd=DetailsSearch). </code>
 
 - Lien vers le [rapport MulitQC SRR10390685_1](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685_1_fastqc.html)
 - Lien vers le [rapport MulitQC SRR10390685_2](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685_2_fastqc.html)
+
 Est-ce que les reads déposés ont subi une étape de nettoyage avant d'être déposés ? Pourquoi ?
 
 - [X] Oui
@@ -297,7 +298,7 @@ echo "(7066055*149.5 + 7066055*150.4)/4268302" | bc > supplemental_data/profonde
 
 ```
 
-La profondeur de séquençage est de : <code></code> X.
+La profondeur de séquençage est de : <code>496</code> X.
 
 ## Nettoyage des reads
 
@@ -312,7 +313,7 @@ Les paramètres suivants ont été choisis :
 
 |Parametre | Valeur | Explication |
 |----------|--------|-------------|
-|  |  |  |
+|  --cut_mean_quality| 30 | Nettoyage des reads en fin de séquence  |
 
 
 
