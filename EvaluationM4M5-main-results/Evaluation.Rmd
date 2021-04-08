@@ -443,6 +443,26 @@ Calculez le nombre de reads qui chevauchent avec au moins 50% de leur longueur l
 
 ```{bash}
 
+## Répertoire de travail
+pwd
+#/shared/projects/dubii2021/agodmer/Evaluation_M4_M5/DATA_analysis
+
+## Chargement du module bedtools
+module avail bedtools
+module load bedtools/2.29.2
+bedtools --version >> ../supplemental_data/Version_tools.txt
+
+## Extraction du gène d'intérêt à partir du fichier gff
+grep trmNF REFERENCE_GENOME/GCF_000009045.1_ASM904v1_genomic.gff.gz | awk '$3=="gene"' > REFERENCE_GENOME/trmNF_gene.gff3
+
+## Ressources du cluster
+salloc --cpus-per-task=8 --mem=10
+
+## Croisemment des données avec l'option -f (nombre de reads qui chevauchent avec au moins 50% de leur longueur le gène trmNF)
+srun bedtools intersect -a MAPPING/SRR10390685_on_GCF_000009045.1_ASM904v1_genomic_reference.1.sort.bam -b REFERENCE_GENOME/trmNF_gene.gff3 -sorted -f 0.5 > MAPPING/SRR10390685_on_trmNF_gene.bam
+
+
+
 ```
 
 <code> </code> reads chevauchent le gène d'intérêt.
