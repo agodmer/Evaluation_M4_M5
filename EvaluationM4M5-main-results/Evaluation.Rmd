@@ -496,4 +496,30 @@ srun samtools idxstats MAPPING/SRR10390685_on_trmNF_gene.sort.bam > ../supplemen
 
 Utilisez <strong class="tool">IGV</strong> @igv sous [sa version en ligne](https://igv.org/app/) pour visualiser les alignements sur le gène. Faites une capture d'écran du gène entier.
 
+```{bash}
+## Répertoire de travail
+pwd
+#/shared/projects/dubii2021/agodmer/Evaluation_M4_M5/DATA_analysis/REFERENCE_GENOME
+
+## Dézipper le fichier fasta du génome de référence (peu volumineux)
+gunzip GCF_000009045.1_ASM904v1_genomic.fna.gz
+
+## Création d'un fichier FASTA index pour le génome de référence
+samtools faidx GCF_000009045.1_ASM904v1_genomic.fna
+
+## Téléchargement des fichiers avecla commande scp : 
+#GCF_000009045.1_ASM904v1_genomic.fna
+#GCF_000009045.1_ASM904v1_genomic.fna.fai
+#SRR10390685_on_GCF_000009045.1_ASM904v1_genomic_reference.1.sort.bam
+#SRR10390685_on_GCF_000009045.1_ASM904v1_genomic_reference.1.sort.bam.bai
+#SRR10390685_on_trmNF_gene.sort.bam
+#SRR10390685_on_trmNF_gene.sort.bam.bai
+
+
+
+```
+
+<code>Capture d'écran du gène entier : </code>
+![Capture d'écran du gène entier](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/Capture_ecran_gene_module4_5.PNG)
+
 # References
