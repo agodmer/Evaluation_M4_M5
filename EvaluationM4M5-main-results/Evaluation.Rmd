@@ -183,7 +183,7 @@ Quelle est la taille de ce génome ?
 
 ## Taille du génome de référence
 ## Enregistrement du résultats dans Stats_genome_ref.txt
-zcat GCF_000009045.1_ASM904v1_genomic.fna.gz | grep -v "^>" | tr --delete "\n" | wc -c > ../../supplemental_data/Stats_genome_ref.txt
+srun zcat GCF_000009045.1_ASM904v1_genomic.fna.gz | grep -v "^>" | tr --delete "\n" | wc -c > ../../supplemental_data/Stats_genome_ref.txt
 
 ## Visualisation du fichier
 cat ../../supplemental_data/Stats_genome_ref.txt
@@ -343,7 +343,7 @@ out2 CLEANING/SRR10390685_2_clean.fastq.gz --html ./fastp.html --cut_mean_qualit
 ## Statistiques sur les read apres nettoyage avec fastp et écriture dans le fichier After_cleaning_stats_fastq.txt dans supplemental_data
 srun seqkit stats --threads 1 CLEANING/*.fastq.gz > ../supplemental_data/After_cleaning_stats_fastq.txt
 
-## Nombres de reads conservés
+## Nombre de reads conservés
 cat ../supplemental_data/After_cleaning_stats_fastq.txt
 
 #file                                   format  type   num_seqs      sum_len  min_len  avg_len  max_len
