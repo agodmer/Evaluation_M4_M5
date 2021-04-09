@@ -15,7 +15,7 @@
 |Nombre de gènes connus sur le génome de référence|Genome de référence : |[Lien_5](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/Stats_genome_ref_nb_genes.txt)|
 |Contrôle qualité des reads (module fastqc)|SRR10390685_1.fastq.gz|[rapport MulitQC SRR10390685_1](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685_1_fastqc.html)|
 |Contrôle qualité des reads (module fastqc)|SRR10390685_2.fastq.gz|[rapport MulitQC SRR10390685_2](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685_2_fastqc.html)|
-|Profondeur du génome séquencé|Profondeurs versus le génome de référence|[Lien_6](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/profondeur_seq_vs_genomeref.txt)|
+|Profondeur du génome séquencé|Profondeur versus le génome de référence|[Lien_6](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/profondeur_seq_vs_genomeref.txt)|
 
 
 
