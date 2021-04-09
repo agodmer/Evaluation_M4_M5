@@ -363,10 +363,10 @@ Les paramètres suivants ont été choisis :
 
 |Parametre | Valeur | Explication |
 |----------|--------|-------------|
-|cut_mean_quality| 30 | Nettoyage des reads en fin de séquençage avec une qualité un peu plus basse|
-|cut_window_size|8||
-|length_required|100||
-|cut_tail |||
+|cut_mean_quality| 30 |Nettoyage des reads en fin de séquençage avec une qualité un peu plus basse|
+|cut_window_size|8|Taille de la fênetre glissante pour le calcul de qualité moyenne des bases|
+|length_required|100|Supprimer les reads ayant une taille inférieure à 100pb|
+|cut_tail ||Enlever les adapateurs (non nécessaire, déjà réalisé)|
 Ces paramètres ont permis de conserver <code>6,777,048</code> reads pairés, soit une perte de <code>4,1</code>% des reads bruts.
 
 ## Alignement des reads sur le génome de référence
@@ -519,7 +519,7 @@ samtools faidx GCF_000009045.1_ASM904v1_genomic.fna
 
 ```
 
-<code>Capture d'écran du gène entier : </code>
-![Capture d'écran du gène entier](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/Capture_ecran_gene_module4_5.PNG)
+<code>Capture d'écran du gène entier : </code> <br>
+![Capture d'écran du gène entier](../supplemental_data/Capture_ecran_gene_module4_5.PNG)
 
 # References
