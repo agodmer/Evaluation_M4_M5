@@ -350,12 +350,9 @@ cat ../supplemental_data/After_cleaning_stats_fastq.txt
 #CLEANING/SRR10390685_1_clean.fastq.gz  FASTQ   DNA   6,777,048  996,891,051      100    147.1      151
 #CLEANING/SRR10390685_2_clean.fastq.gz  FASTQ   DNA   6,777,048  990,442,597      100    146.1      151
 
-## Calcul du nombre de reads conservés
-echo "(7066055-6777048)/7006055" | bc
+## Calcul du nombre de reads conservés et ecriture dans le fichier Pctage_reads_non_conserves.txt (supplemental_data)
+echo "scale=3;((7066055-6777048)/7006055)*100" | bc > ../supplemental_data/Pctage_reads_non_conserves.txt
 
-#b = (7066055-6777048)/7006055
-#b*100 
-#4.13%
 ```
 
 Les paramètres suivants ont été choisis : 
