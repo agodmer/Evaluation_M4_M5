@@ -16,9 +16,9 @@
 |Contrôle qualité des reads (module fastqc)|SRR10390685_1.fastq.gz|[rapport MulitQC SRR10390685_1](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685_1_fastqc.html)|
 |Contrôle qualité des reads (module fastqc)|SRR10390685_2.fastq.gz|[rapport MulitQC SRR10390685_2](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685_2_fastqc.html)|
 |Profondeur du génome séquencé|Profondeur versus le génome de référence|[Lien_6](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/profondeur_seq_vs_genomeref.txt)|
-|Pourcentage de read non conservés|Pourcentage de read non conservés après nettoyage|[Lien_7](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/Pctage_reads_non_conserves.txt)|
-|Statistiques après mapping|Après mapping|[Lien_7](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685.sort.bam.flagstat)|
-|Nombre de read chevauchant le gène d'intérêt|reads d'au moins 50% de leur longueur le gène *trmNF*|[Lien_1](SRR10390685_on_trmNF_gene_rapport.sort.bam.idxstats)|
+|Pourcentage de read non conservés|Après nettoyage avec fastp|[Lien_7](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/Pctage_reads_non_conserves.txt)|
+|Statistiques après mapping|Utilisation du module bwa|[Lien_8](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685.sort.bam.flagstat)|
+|Nombre de read chevauchant le gène d'intérêt|reads qui couvrent d'au moins 50% de leur longueur le gène *trmNF*|[Lien_9](SRR10390685_on_trmNF_gene_rapport.sort.bam.idxstats)|
 
 
 
