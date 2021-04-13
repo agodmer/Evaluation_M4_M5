@@ -18,7 +18,7 @@
 |Profondeur du génome séquencé|Profondeur versus le génome de référence|[Lien_6](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/profondeur_seq_vs_genomeref.txt)|
 |Pourcentage de read non conservés|Après nettoyage avec fastp|[Lien_7](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/Pctage_reads_non_conserves.txt)|
 |Statistiques après mapping|Utilisation du module bwa|[Lien_8](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685.sort.bam.flagstat)|
-|Nombre de read chevauchant le gène d'intérêt|reads qui couvrent d'au moins 50% de leur longueur le gène *trmNF*|[Lien_9](SRR10390685_on_trmNF_gene_rapport.sort.bam.idxstats)|
+|Nombre de read chevauchant le gène d'intérêt|reads qui couvrent d'au moins 50% de leur longueur le gène *trmNF*|[Lien_9](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685_on_trmNF_gene_rapport.sort.bam.idxstats)|
 
 
 
