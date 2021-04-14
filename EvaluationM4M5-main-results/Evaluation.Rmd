@@ -250,7 +250,20 @@ srun fastqc FASTQ/SRR10390685_1.fastq.gz -o QC/ -t 8
 srun fastqc FASTQ/SRR10390685_2.fastq.gz -o QC/ -t 8
 
 ## Copie des rapport htlm vers supplemental data
-cp QC/*html ../supplemental_data/
+scp QC/*html ../supplemental_data/
+
+## Création d'un rapport multiQC
+
+## Chargement du module multiQC
+module avail multiqc
+module load multiqc/1.9
+
+## Ecriture de la version de multiqc avec nano sur le fichier Version_tools.txt
+srun multiqc -d . -o .
+
+## Copie du rapport dans supplmental_data
+scp multiqc_report.html ../supplemental_data/
+
 
 ```
 
@@ -275,8 +288,9 @@ et les lignes du graphiques sont parallèles les unes aux autres.<br>
 La sur-représentation des bases AT est concordante avec le poucentage de GC de l'espèce étudiée (*Bacillus subtilis*) qui n'est pas égal
 <br>à 50% mais à 43% sur le génome de référence  *Bacillus subtilis subsp. subtilis str. 168* [NCBI](https://www.ncbi.nlm.nih.gov/genome/?term=Bacillus%20subtilis%5BOrganism%5D&cmd=DetailsSearch). </code>
 
-- Lien vers le [rapport MulitQC SRR10390685_1](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685_1_fastqc.html)
-- Lien vers le [rapport MulitQC SRR10390685_2](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685_2_fastqc.html)
+- Lien vers le [rapport FASTQC SRR10390685_1](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685_1_fastqc.html)
+- Lien vers le [rapport FASTQC SRR10390685_2](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685_2_fastqc.html)
+- Lien vers le [rapport MULTIQC](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/multiqc_report.html)
 
 Est-ce que les reads déposés ont subi une étape de nettoyage avant d'être déposés ? Pourquoi ?
 
