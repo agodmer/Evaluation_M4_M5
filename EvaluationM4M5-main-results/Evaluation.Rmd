@@ -158,7 +158,7 @@ cat ../supplemental_data/Raw_stats_fastq.txt
 
 ```
 
-Les fichiers FASTQ contiennent <code>7,066,055</code> reads.
+Les fichiers FASTQ contiennent <code>7066055</code> reads.
 
 Téléchargez le génome de référence de la souche ASM904v1 de _Bacillus subtilis_ disponible à [cette adresse](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/045/GCF_000009045.1_ASM904v1/GCF_000009045.1_ASM904v1_genomic.fna.gz)
 
@@ -219,7 +219,7 @@ pwd
 #/shared/projects/dubii2021/agodmer/Evaluation_M4_M5/DATA_analysis/REFERENCE_GENOME
 
 ## Enregistrement du résultats dans Stats_genome_ref_nb_genes.txt
-less GCF_000009045.1_ASM904v1_genomic.gff.gz | awk '($3 == "gene")' | wc -l > ../../supplemental_data/Stats_genome_ref_nb_genes.txt
+zless GCF_000009045.1_ASM904v1_genomic.gff.gz | awk '($3 == "gene")' | wc -l > ../../supplemental_data/Stats_genome_ref_nb_genes.txt
 
 ## Visualisation du fichier
 cat ../../supplemental_data/Stats_genome_ref_nb_genes.txt
@@ -307,15 +307,15 @@ zcat DATA_analysis/REFERENCE_GENOME/GCF_000009045.1_ASM904v1_genomic.fna.gz |gre
 #FASTQ/SRR10390685_2.fastq.gz  FASTQ   DNA   7,066,055  1,062,807,718      130    150.4      151
 
 ## profondeur = N*L/G 
-echo "(7066055*149.5 + 7066055*150.4)/4268302" | bc
-#496
+echo "(7066055*149.5 + 7066055*150.4)/4215606" | bc
+#502
 
 ## Ecriture de la version de fastqc sur le fichier profondeur_seq_vs_genomeref.txt dans supplemental_data
-echo "(7066055*149.5 + 7066055*150.4)/4268302" | bc > supplemental_data/profondeur_seq_vs_genomeref.txt
+echo "(7066055*149.5 + 7066055*150.4)/4215606" | bc > supplemental_data/profondeur_seq_vs_genomeref.txt
 
 ```
 
-La profondeur de séquençage est de : <code>496</code> X.
+La profondeur de séquençage est de : <code>502</code> X.
 
 ## Nettoyage des reads
 
@@ -364,7 +364,7 @@ Les paramètres suivants ont été choisis :
 |cut_window_size|8|Taille de la fênetre glissante pour le calcul de qualité moyenne des bases|
 |length_required|100|Supprimer les reads ayant une taille inférieure à 100pb|
 |cut_tail ||Enlever les adapateurs (non nécessaire, déjà réalisé)|
-Ces paramètres ont permis de conserver <code>6,777,048</code> reads pairés, soit une perte de <code>4,1</code>% des reads bruts.
+Ces paramètres ont permis de conserver <code>6777048</code> reads pairés, soit une perte de <code>4.1</code>% des reads bruts.
 
 ## Alignement des reads sur le génome de référence
 
