@@ -1,6 +1,7 @@
 fasterq-dump version 2.10.3
 seqkit v0.14.0
 FastQC v0.11.9
+multiqc v1.9
 Fastp v0.20.0
 bwa v0.7.17
 samtools 1.10
