@@ -528,7 +528,7 @@ module avail multiqc
 module load multiqc/1.9
 
 ## Ecriture de la version de multiqc avec nano sur le fichier Version_tools.txt
-srun multiqc -d . -o .
+srun multiqc -d . -o DATA_analysis""
 
 ## Copie du rapport dans supplmental_data
 scp multiqc_report.html ../supplemental_data/
