@@ -21,12 +21,11 @@
 |Nombre de gènes connus sur le génome de référence|Genome de référence : GCF_000009045.1_ASM904v1_genomic|[Nombre de gènes connus](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/Stats_genome_ref_nb_genes.txt)|
 |Contrôle qualité des reads (module fastqc)|SRR10390685_1.fastq.gz|[Rapport FASTQC SRR10390685_1](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685_1_fastqc.html)|
 |Contrôle qualité des reads (module fastqc)|SRR10390685_2.fastq.gz|[Rapport FASTQC SRR10390685_2](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685_2_fastqc.html)|
-|Rapport MultiQC (module multiqc)|SRR10390685_2.fastq.gz|[Rapport MulitQC](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/multiqc_report.html)|
 |Profondeur du génome séquencé|Profondeur versus le génome de référence|[Profondeur versus le génome de référence](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/profondeur_seq_vs_genomeref.txt)|
 |Pourcentage de read non conservés|Après nettoyage avec fastp|[Pourcentage reds conservés après nettoyage](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/Pctage_reads_non_conserves.txt)|
 |Statistiques après mapping|Utilisation du module bwa|[Mapping avec bwa](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685.sort.bam.flagstat)|
 |Nombre de reads chevauchant le gène d'intérêt|reads qui couvrent d'au moins 50% de leur longueur le gène *trmNF*|[Reads chevauchant](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/SRR10390685_on_trmNF_gene_rapport.sort.bam.idxstats)|
-
+|Rapport MultiQC (module multiqc)|Résumé des opérations|[Rapport MulitQC](https://agodmer.github.io/Evaluation_M4_M5/supplemental_data/multiqc_report.html)|
 
 
 
